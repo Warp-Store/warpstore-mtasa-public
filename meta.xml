@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <meta>
   <info author="Warp Store" type="script" name="warpstore-integration-mtasa" version="1.0"/>
-  <script src="commands.lua" type="shared" cache="false"/>
   <script src="config.lua" type="shared" cache="false"/>
+  <script src="commands.lua" type="shared" cache="false"/>
   <script src="assets/server.luac" cache="false" type="server"/>
   <min_mta_version client="1.5.9" server="1.5.9"/>
 </meta>

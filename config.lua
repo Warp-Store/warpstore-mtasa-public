@@ -1,5 +1,5 @@
 config = {
-    token = 'seu-token', -- Você pegar seu token em: https://docs.warpstore.app
+    token = 'mtasa-21d22e9c-e1a5-4675-bae7-6e19215898a6-abe3111e-4db1-45b9-99b5-9d774dbddd63', -- Você pegar seu token em: https://docs.warpstore.app
     chat = {
         global = false, -- (true) para todos os jogadores ver, ou (false) para somente o jogador!
         color = '#ffffff', -- (#) Cor da mensagem que será enviada no chat!
@@ -13,7 +13,7 @@ config = {
         expireIn = "[WARP - DELIVERY] O produto :name e o :item expira em :date",
         expire = "[WARP - DELIVERY] O produto :name expirou e o :item foi removido!", -- item representa caso seja um grupo, quantidade, ou qualquer outro argumento. Não remova
         noHaveExpire = "[WARP - DELIVERY] Você não tem nenhum produto para expirar", -- item representa caso seja um grupo, quantidade, ou qualquer outro argumento. Não remova
-        useInfoBox = true, -- Caso ele seja false as mensagens serão exibidas no chat, e caso seja true será exibida na sua info-box
+        useInfoBox = false, -- Caso ele seja false as mensagens serão exibidas no chat, e caso seja true será exibida na sua info-box
     },
     debug = {
         enabled = true, -- Deixe em true para caso de erros na request do servidor ele retornar um erro!

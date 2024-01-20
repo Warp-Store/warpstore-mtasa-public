@@ -1,14 +1,16 @@
 commands = {
-    ["addVehicle"] = function (args)
+    ["hyperscripts:addVip"] = function (args)
         local playerID = tonumber(args[1]);
-        local carId = tonumber(args[2]);
+        local exportResourceName = args[2]
+        local vipName = args[3]
+        local vipNumber = args[4]
+        local vipDays = tonumber(args[5])
 
-        local vehicleSpawn = createVehicle(carId, 0, 0, 0)
+        local HSVIP = exports[exportResourceName]
 
         local player = getPlayerID(playerID);
-        local x, y, z = getElementPosition(player)
+        local playerAccount = getAccountName( getPlayerAccount( player ))
 
-        spawnVehicle(vehicleSpawn, x, y, z);
-        warpPlayerIntoVehicle(player, vehicleSpawn)
+        HSVIP:givePremium(playerAccount, vipName, vipDays, 'Dias', 'VIP:0' .. vipNumber)
     end
 }

@@ -22,5 +22,22 @@ commands = {
         local currentCoins = getElementData(player, elementData) or 0;
 
         setElementData(player, elementData, currentCoins + quantityCoin)
+    end,
+    ["hyperscripts:addVehicle"] = function (args)
+        local playerID = tonumber(args[1]);
+        local exportResourceName = args[2]
+        local vehicleName = args[3]
+        local vehicleModel = tonumber(args[4])
+        local validate = tonumber(args[5])
+        
+        local player = getPlayerID(playerID);
+        local account = getAccountName( getPlayerAccount( player ) )
+        local conce = exports[exportResourceName]
+
+        local verify = conce:getVehicle( account, vehicleName )
+        if not verify then
+            local plate = conce:generatePlate( )
+            conce:setVehicleVip( account, vehicleName, plate, 'vips', vehicleModel, validate )
+        end
     end
 }

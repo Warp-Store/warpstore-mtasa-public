@@ -28,7 +28,8 @@ commands = {
         local exportResourceName = args[2]
         local vehicleName = args[3]
         local vehicleModel = tonumber(args[4])
-        local validate = tonumber(args[5])
+        local vehicleCategory = tonumber(args[5])
+        local validate = tonumber(args[6])
         
         local player = getPlayerID(playerID);
         local account = getAccountName( getPlayerAccount( player ) )
@@ -37,7 +38,7 @@ commands = {
         local verify = conce:getVehicle( account, vehicleName )
         if not verify then
             local plate = conce:generatePlate( )
-            conce:setVehicleVip( account, vehicleName, plate, 'vips', vehicleModel, validate )
+            conce:setVehicleVip( account, vehicleName, plate, vehicleCategory, vehicleModel, validate )
         end
     end
 }

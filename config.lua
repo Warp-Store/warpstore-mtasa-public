@@ -1,16 +1,23 @@
 config = {
-    token = 'mtasa-21d22e9c-e1a5-4675-bae7-6e19215898a6-abe3111e-4db1-45b9-99b5-9d774dbddd63', -- Você pegar seu token em: https://docs.warpstore.app
+    token = 'your-token', -- Você pegar seu token em: https://docs.warpstore.app
     chat = {
         global = false, -- (true) para todos os jogadores ver, ou (false) para somente o jogador!
         color = '#ffffff', -- (#) Cor da mensagem que será enviada no chat!
     },
     commands = {
-        showSales = "vertempo" -- O comando usado para ver as compras e data de expiração.
+        showSales = "compras" -- O comando usado para ver as compras e data de expiração.
+    },
+    panelHtml = {
+        enabled = true, -- Caso estiver ativo ele exibe um painel na tela para todos os jogadores avisando que o usuário comprou o produto,
+        title = "Warp Delivery",
+        global = true, -- Caso qusier que todos os jogadores vejam esta mensagem deixe ativado, e false para quando quiser que apenas o comprador veja
+        message = ":name fez uma doação do produto :product para o servidor."
     },
     messages = {
         newBuy = "[WARP - DELIVERY] :name comprou :product com sucesso!",
         notFound = "[WARP - DELIVERY] Não foi encontrado nenhum benefício!",
         expireIn = "[WARP - DELIVERY] O produto :name e o :item expira em :date",
+        expired = "[WARP - DELIVERY] :name, O seu produto :product teve um item expirado.",
         expire = "[WARP - DELIVERY] O produto :name expirou e o :item foi removido!", -- item representa caso seja um grupo, quantidade, ou qualquer outro argumento. Não remova
         noHaveExpire = "[WARP - DELIVERY] Você não tem nenhum produto para expirar", -- item representa caso seja um grupo, quantidade, ou qualquer outro argumento. Não remova
         useInfoBox = false, -- Caso ele seja false as mensagens serão exibidas no chat, e caso seja true será exibida na sua info-box
@@ -18,10 +25,9 @@ config = {
     debug = {
         enabled = true, -- Deixe em true para caso de erros na request do servidor ele retornar um erro!
     },
-    cooldownRequest = 30000, -- Tempo em milisegundos que o site verifica se tem alguma compra para ativar no jogo.
+    cooldownRequest = 10000, -- Tempo em milisegundos que o site verifica se tem alguma compra para ativar no jogo.
     cooldownRunCommand = 2500, -- Tempo de rodar os comandos de entrega depois de pagos!
-    cooldownExpire = 1000, -- Tempo de verificação para expirar o grupo do usuário!
-    webhook = "webhook-url", -- Link da webhook do discord, caso você não tenha o acesso ao plano que permite o bot, você pode usar a webhook!,
+    cooldownExpire = 60000, -- Tempo de verificação para expirar o grupo do usuário!
 
     findUserById = function(id)
         v = false

@@ -40,5 +40,8 @@ commands = {
             local plate = conce:generatePlate( )
             conce:setVehicleVip( account, vehicleName, plate, vehicleCategory, vehicleModel, validate )
         end
+    end,
+    ["testeItem"] = function (args)
+        print(args[1])
     end
 }

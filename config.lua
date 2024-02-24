@@ -25,7 +25,7 @@ config = {
     debug = {
         enabled = true, -- Deixe em true para caso de erros na request do servidor ele retornar um erro!
     },
-    cooldownRequest = 10000, -- Tempo em milisegundos que o site verifica se tem alguma compra para ativar no jogo.
+    cooldownRequest = 20000, -- Tempo em milisegundos que o site verifica se tem alguma compra para ativar no jogo.
     cooldownRunCommand = 2500, -- Tempo de rodar os comandos de entrega depois de pagos!
     cooldownExpire = 60000, -- Tempo de verificação para expirar o grupo do usuário!
 

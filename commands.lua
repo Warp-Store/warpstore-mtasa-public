@@ -28,20 +28,16 @@ commands = {
         local exportResourceName = args[2]
         local vehicleName = args[3]
         local vehicleModel = tonumber(args[4])
-        local vehicleCategory = tonumber(args[5])
+        local vehicleCategory = args[5]
         local validate = tonumber(args[6])
         
         local player = getPlayerID(playerID);
-        local account = getAccountName( getPlayerAccount( player ) )
         local conce = exports[exportResourceName]
 
         local verify = conce:getVehicle( account, vehicleName )
         if not verify then
             local plate = conce:generatePlate( )
-            conce:setVehicleVip( account, vehicleName, plate, vehicleCategory, vehicleModel, validate )
+            conce:setVehicleConce( player, {name = vehicleName, model = vehicleModel}, plate, vehicleCategory, vehicleModel, validate )
         end
-    end,
-    ["testeItem"] = function (args)
-        print(args[1])
     end
 }

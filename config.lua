@@ -1,5 +1,5 @@
 config = {
-    token = 'your-token', -- Você pegar seu token em: https://docs.warpstore.app
+    token = 'mtasa-d861f5b0-e248-436b-91a6-0eb3ce3c3e2d-872f16f9-c89c-4c0b-bec4-7e5dc2236495', -- Você pegar seu token em: https://docs.warpstore.app
     chat = {
         global = false, -- (true) para todos os jogadores ver, ou (false) para somente o jogador!
         color = '#ffffff', -- (#) Cor da mensagem que será enviada no chat!

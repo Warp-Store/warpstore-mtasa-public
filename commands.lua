@@ -25,19 +25,38 @@ commands = {
     end,
     ["hyperscripts:addVehicle"] = function (args)
         local playerID = tonumber(args[1]);
-        local exportResourceName = args[2]
-        local vehicleName = args[3]
-        local vehicleModel = tonumber(args[4])
-        local vehicleCategory = args[5]
-        local validate = tonumber(args[6])
+        local exportsResource = args[2]
+        local vehicle = string.gsub(args[3], "-", " ")
         
         local player = getPlayerID(playerID);
-        local conce = exports[exportResourceName]
+        local conce = exports[exportsResource];
+
+        local vehicleConfig = conce:getVehicleVipConfig(vehicle);
 
         local verify = conce:getVehicle( account, vehicleName )
         if not verify then
             local plate = conce:generatePlate( )
-            conce:setVehicleConce( player, {name = vehicleName, model = vehicleModel}, plate, vehicleCategory, vehicleModel, validate )
+            conce:setVehicleConce( player, { name = vehicle, model = vehicleConfig.model }, { 255, 255, 255 }, vehicleConfig.category )
         end
+    end,
+    ["hyperscripts:addVehicleVip"] = function (args)
+        local playerID = tonumber(args[1]);
+        local exportsResource = args[2]
+        local vehicle = string.gsub(args[3], "-", " ")
+        local validate = tonumber(args[4])
+        
+        local player = getPlayerID(playerID);
+        local conce = exports[exportsResource];
+
+        local vehicleConfig = conce:getVehicleVipConfig(vehicle);
+
+        local verify = conce:getVehicle( account, vehicleName )
+        if not verify then
+            local plate = conce:generatePlate( )
+            conce:setVehicleVip( player, vehicle, vehicleConfig.category, vehicleConfig.model, validate )
+        end
+    end,
+    ["testeItem"] = function (args)
+        print(args[1])
     end
 }

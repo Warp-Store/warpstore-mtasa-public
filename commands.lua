@@ -55,8 +55,5 @@ commands = {
             local plate = conce:generatePlate( )
             conce:setVehicleVip( player, vehicle, vehicleConfig.category, vehicleConfig.model, validate )
         end
-    end,
-    ["testeItem"] = function (args)
-        print(args[1])
     end
 }

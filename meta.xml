@@ -11,5 +11,5 @@
   <file src = 'src/assets/images/background.png' fileType = 'file'/>
 
   <min_mta_version client = '1.5.9' server = '1.5.9'/>
-  
+
 </meta>

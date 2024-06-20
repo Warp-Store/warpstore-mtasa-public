@@ -1,8 +1,8 @@
 # warpstore-mtasa-public
-Project for integrate mtasa with you server
+Projeto para integração do mtasa com seu servidor
 
--  ✅ Added product expiration system
--  ✅ Added refund system
--  ✅ Add system to revalidate if the user is online for delivery
--  ✅ Added infobox system support
--  ✅ Added product command for see product gonna expirate
+- ✅ Adicionado sistema de expiração de produto
+- ✅ Adicionado sistema de reembolso
+- ✅ Adicionar sistema para revalidar caso o usuário esteja online para entrega
+- ✅ Adicionado suporte ao sistema infobox
+- ✅ Adicionado comando de produto para ver o produto expirar

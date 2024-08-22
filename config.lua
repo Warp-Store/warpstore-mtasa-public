@@ -1,55 +1,72 @@
+--[[
+╔══════════════════════════════════════════════════[ www.warpstore.app ]═════════════════════════════════════════════════════════════╗
+
+                               ██╗    ██╗ █████╗ ██████╗ ██████╗     ███████╗████████╗ ██████╗ ██████╗ ███████╗
+                               ██║    ██║██╔══██╗██╔══██╗██╔══██╗     ██╔════╝╚══██╔══╝██╔═══██╗██╔══██╗██╔════╝
+                               ██║ █╗ ██║███████║██████╔╝██████╔╝    ███████╗   ██║   ██║   ██║██████╔╝█████╗  
+                               ██║███╗██║██╔══██║██╔══██╗██╔═══╝       ╚════██║   ██║   ██║   ██║██╔══██╗██╔══╝  
+                               ╚███╔███╔╝██║  ██║██║  ██║██║         ███████║   ██║   ╚██████╔╝██║  ██║███████╗
+                                ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝           ╚══════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝
+                                                                                                                                         
+                                
+╚══════════════════════════════════════════════════[ www.warpstore.app ]═════════════════════════════════════════════════════════════╝                                                                                                         
+--]]
+
+
 config = {
-    token = 'mtasa-27ac7110-448f-4c73-af60-10628384efe4-1ab359bb-f9cb-4e7a-8f0f-27d40c487bd9', -- Você pegar seu token em: https://docs.warpstore.app
-    chat = {
-        global = false, -- (true) para todos os jogadores ver, ou (false) para somente o jogador!
-        color = '#ffffff', -- (#) Cor da mensagem que será enviada no chat!
-    },
-    commands = {
-        showPurchases = 'compras' -- O comando usado para ver as compras e a data de expiração.
-    },
-    panelHtml = {
-        enabled = true, -- Caso estiver ativo ele exibe um painel na tela para todos os jogadores avisando que o usuário comprou o produto,
-        global = true, -- Caso qusier que todos os jogadores vejam esta mensagem deixe ativado, e false para quando quiser que apenas o comprador veja
-        title = 'Warp Delivery',
-        message = ':name fez uma doação do produto :product para o servidor.'
-    },
-    messages = {
-        newBuy = '[WARP - DELIVERY] :name comprou :product com sucesso!',
-        notFound = '[WARP - DELIVERY] Não foi encontrado nenhum benefício!',
-        expireIn = '[WARP - DELIVERY] O produto :name e o :item expira em :date',
-        expire = '[WARP - DELIVERY] Ei :name, o seu produto :product expirou e foi removido!', -- item representa caso seja um grupo, quantidade, ou qualquer outro argumento. Não remova
-        refund = '[WARP - DELIVERY] Ei :name, você recebeu o reembolso de uma compra e o :product foi removido de sua conta!', -- quando algum item é reembolsado.
-        nothingToExpire = '[WARP - DELIVERY] Você não tem nenhum produto para expirar', -- item representa caso seja um grupo, quantidade, ou qualquer outro argumento. Não remova
-        useInfoBox = false, -- Caso ele seja false as mensagens serão exibidas no chat, e caso seja true será exibida na sua info-box
-    },
-    cooldownRequest = 10000, -- Tempo em milisegundos que o site verifica se tem alguma compra para ativar no jogo.
-
-    findUserById = function( id )
-        v = false
-        for i, player in ipairs( getElementsByType( 'player' ) ) do
-            local idAlvo = getElementData( player, 'ID' )
-            if idAlvo and tonumber( idAlvo ) == id then
-                v = player
-                break
-            end
-        end
-        return v
-    end,
-    
-    InfoBox = {
-        displaySeconds = 3000, -- Tempo de notificação, caso não for usar info-box não mecha.
-
-        -- Aqui fica sua função de info-box que será chamada quando nescessário pelo nosso plugin!
-        execute = function ( element, text, type )
-            exports['[HS]Notify_System']:notify( element, text, type )
-        end,
-
-        -- Define aqui os status de sua infobox, não mecha no primeiro valor, apenas no segundo.
-        status = {
-            ['success'] = 'success',
-            ['info'] = 'info',
-            ['warning'] = 'warning',
-            ['error'] = 'error'
-        } 
-    }
+    ['warp:delivery'] = {
+        ['token'] = 'SEU TOKEN QUE PEGA NO SITE',
+        ['data:id'] = 'ID';
+        ['color:hex'] = '#0095ff';
+        ['entrega'] = {
+            ['balões'] = {
+                ['ativar'] = true; -- Caso deseja que a mensagem na tela apareça.
+                ['visivel'] = true; -- Caso deseja que todas as pessoas vejam a mensagem na tela.
+                ['texto'] = 'O(a) jogador ${hex}${name}(${id}) #FFFFFFAtivou o produto ${hex}${product}#FFFFFF com sucesso!\n${hex}www.warpstore.app';
+                ['rgb'] = { 255, 255, 255 };
+                ['font'] = 'roboto-bold.ttf';
+                ['size'] = 20;
+                ['quantidade'] = 50;
+                ['tempo'] = 10; -- Tempo que ira ficar na tela do player
+                ['formato'] = 1000; -- Formato de tempo ( 1000 = segundos, 60000 =  minutos, 3600000 = Hora )
+            };
+            ['chatbox'] = {
+                ['ativar'] = true;
+                ['visivel'] = true;
+                ['rgb'] = { 255, 255, 255 };
+                ['texto'] = '[WARP-DELIVERY] - O(a) jogador #0095ff${name}(${id}) #FFFFFFAtivou o produto #0095ff${product}#FFFFFF com sucesso!';
+            };
+            ['infobox'] = {
+                ['ativar'] = true;
+                ['visivel'] = true;
+                ['notificação'] = {
+                    function( player, dados )
+                        return exports['[HS]Notify_System']:notify( player, 'O(a) jogador '..dados.name..'('..dados.id..') Ativou o produto '..dados.product..' com sucesso', 'info' )
+                    end,
+                };
+            };
+        };
+        ['tempo:entrega'] = {
+            ['tempo'] = 10; -- Tempo que ira ficar na tela do player
+            ['formato'] = 1000; -- Formato de tempo ( 1000 = segundos, 60000 =  minutos, 3600000 = Hora )
+            ['repetições'] = 0; -- Verificação de quantas vezes ira ficar rodando o sistema, deixe em 0 para sempre verificar.
+        };
+        ['development'] = { -- Verificação para ficar testando comando deixe em false e ele não ira atualizar no site que foi entregue.
+            ['update:status'] = true; -- Não mexer com o servidor aberto pois ira ficar liberando o produto a todo momento sem atualizar no site que já foi entregue.
+        };
+    };
 }
+
+
+-- Função Util para obter o elemento do player pelo ID:
+
+
+getPlayerID = function( id )
+    for _, player in ipairs( getElementsByType( 'player' ) ) do
+         local data_id = getElementData( player, config['warp:delivery']['data:id'] ) or 0
+         if tonumber( data_id ) == tonumber( id ) then
+              return player
+         end
+    end
+    return false
+end

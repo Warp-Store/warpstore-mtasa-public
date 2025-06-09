@@ -44,12 +44,14 @@ commands = {
     };
     ['hyperscripts:addVip'] = {
         function( player, args )
-            local vipName = args[ 1 ]
-            local vipNumber = args[ 2 ]
-            local vipDays = tonumber( args[ 3 ] )
+            local vipNumber = tonumber( args[ 1 ] )
+            local vipDays = tonumber( args[ 2 ] )
             local HSVIP = exports['[HS]VIP_System']
-            local playerAccount = getAccountName( getPlayerAccount( player ))
-            HSVIP:givePremium( playerAccount, vipName, vipDays, 'Dias', 'VIP:0'..vipNumber )
+            HSVIP:setPlayerVip( player, vipNumber, vipDays )
+            --OBS: no seu produto a configuração tem que estar neste exemplo: hyperscripts:addVip {userId} 1 30
+            -- 1ª argumento representa o número do vip.
+            -- 2ª argumento representa os dias de vip.
+            -- 3 ( importante ): confira se a export <export function = 'setPlayerVip' type = 'server' /> está adicionada no meta.xml.
         end;
     };
     ['hyperscripts:addCoin'] = {
